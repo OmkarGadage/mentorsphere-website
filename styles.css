@@ -373,7 +373,13 @@ h2::after {
 /* ============================================
    FOUNDERS SECTION
    ============================================ */
-.founders-grid,
+.founders-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);  /* 2 columns on desktop */
+    gap: 40px;
+    margin-top: 50px;
+}
+
 .leaders-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
