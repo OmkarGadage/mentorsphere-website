@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Mentorsphere</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <img src="https://via.placeholder.com/150x40/1e3a5f/ffffff?text=Mentorsphere" alt="Mentorsphere" class="logo-img">
+            </div>
+            <div class="nav-toggle" id="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="about.html" class="nav-link">About Us</a></li>
+                <li><a href="founders.html" class="nav-link">Founders & Team</a></li>
+                <li><a href="gallery.html" class="nav-link">Gallery</a></li>
+                <li><a href="testimonials.html" class="nav-link">Testimonials</a></li>
+                <li><a href="contact.html" class="nav-link active">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <h1>Get in Touch</h1>
+        <p>Ready to learn more about Mentorsphere? Let's talk.</p>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section">
+        <div class="container">
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h2>Connect With Us</h2>
+                    <p>We'd love to hear from you. Fill out the form and we'll get back to you as soon as possible.</p>
+
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <h3>Location</h3>
+                                <p>Premium Boulevard Towers<br>Pune, Maharashtra</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <h3>Email</h3>
+                                <p>mentorsphere348@gmail.com<br>mentorspherecore@mentorsphere.in</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-form-container">
+                    <form class="contact-form" action="https://formspree.io/f/xzddponr" method="POST">
+                        <div class="form-group">
+                            <label for="name">Full Name *</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email Address *</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phone">Phone Number *</label>
+                            <input type="tel" id="phone" name="phone" required>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="college">College/University *</label>
+                                <input type="text" id="college" name="college" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="year">Year of Study *</label>
+                                <select id="year" name="year" required>
+                                    <option value="">Select Year</option>
+                                    <option value="First Year">First Year (FY)</option>
+                                    <option value="Second Year">Second Year (SY)</option>
+                                    <option value="Third Year">Third Year (TY)</option>
+                                    <option value="Fourth Year">Fourth Year (Final Year)</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="parent_name">Parent/Guardian Name</label>
+                            <input type="text" id="parent_name" name="parent_name">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message">Tell us about yourself (Optional)</label>
+                            <textarea id="message" name="message" rows="5" placeholder="Share what you're looking for or any questions you have..."></textarea>
+                        </div>
+
+                        <button type="submit" class="submit-button">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 Mentorsphere. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+                <a href="index.html">Home</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
