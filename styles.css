@@ -406,7 +406,7 @@ h2::after {
 .founder-image,
 .leader-image {
     overflow: hidden;
-    height: 280px;
+    height: 380px;
     background: linear-gradient(135deg, var(--primary-color) 0%, rgba(212, 175, 55, 0.2) 100%);
 }
 
