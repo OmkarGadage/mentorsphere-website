@@ -1196,6 +1196,7 @@ h2::after {
 
     .logo-img {
         height: 30px;
+       margin-left: 0px;
     }
 }
 
