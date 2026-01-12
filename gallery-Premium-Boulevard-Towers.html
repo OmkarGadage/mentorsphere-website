@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Mentoring Sessions - Mentorsphere</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .subgallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      margin-top: 30px;
+    }
+    .subgallery-grid img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      border-radius: 8px;
+      cursor: pointer;
+      box-shadow: var(--shadow);
+    }
+    /* Lightbox */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.85);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 2000;
+    }
+    .lightbox img {
+      max-width: 90vw;
+      max-height: 90vh;
+      border-radius: 8px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+    }
+    .lightbox-close,
+    .lightbox-prev,
+    .lightbox-next {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0,0,0,0.6);
+      color: #fff;
+      border: none;
+      font-size: 2rem;
+      padding: 8px 14px;
+      cursor: pointer;
+    }
+    .lightbox-close { top: 8%; right: 5%; transform: none; font-size: 2.4rem; }
+    .lightbox-prev { left: 5%; }
+    .lightbox-next { right: 5%; }
+  </style>
+</head>
+<body>
+  <!-- reuse your existing navbar here -->
+
+  <section class="page-header">
+    <h1>Mentoring Sessions</h1>
+    <p>Highlights from our live mentoring at Mentorsphere</p>
+  </section>
+
+  <section class="gallery-section">
+    <div class="container">
+      <div class="subgallery-grid" id="mentoringGallery">
+        <!-- just add/remove images here -->
+        <img src="gallery/mentoring/mentoring-1.jpg" alt="Mentoring 1">
+        <img src="gallery/mentoring/mentoring-2.jpg" alt="Mentoring 2">
+        <img src="gallery/mentoring/mentoring-3.jpg" alt="Mentoring 3">
+        <!-- keep adding more files -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox-close">&times;</button>
+    <button class="lightbox-prev">&#10094;</button>
+    <img src="" alt="">
+    <button class="lightbox-next">&#10095;</button>
+  </div>
+
+  <script>
+    const gallery   = document.getElementById('mentoringGallery');
+    const lightbox  = document.getElementById('lightbox');
+    const lbImg     = lightbox.querySelector('img');
+    const btnClose  = lightbox.querySelector('.lightbox-close');
+    const btnPrev   = lightbox.querySelector('.lightbox-prev');
+    const btnNext   = lightbox.querySelector('.lightbox-next');
+
+    const images = Array.from(gallery.querySelectorAll('img'));
+    let currentIndex = 0;
+
+    function openLightbox(index) {
+      currentIndex = index;
+      lbImg.src = images[index].src;
+      lbImg.alt = images[index].alt;
+      lightbox.style.display = 'flex';
+    }
+
+    gallery.addEventListener('click', e => {
+      if (e.target.tagName === 'IMG') {
+        const index = images.indexOf(e.target);
+        openLightbox(index);
+      }
+    });
+
+    btnClose.addEventListener('click', () => lightbox.style.display = 'none');
+    btnPrev.addEventListener('click', () => {
+      currentIndex = (currentIndex - 1 + images.length) % images.length;
+      openLightbox(currentIndex);
+    });
+    btnNext.addEventListener('click', () => {
+      currentIndex = (currentIndex + 1) % images.length;
+      openLightbox(currentIndex);
+    });
+
+    lightbox.addEventListener('click', e => {
+      if (e.target === lightbox) lightbox.style.display = 'none';
+    });
+
+    document.addEventListener('keydown', e => {
+      if (lightbox.style.display === 'flex') {
+        if (e.key === 'Escape') lightbox.style.display = 'none';
+        if (e.key === 'ArrowLeft') btnPrev.click();
+        if (e.key === 'ArrowRight') btnNext.click();
+      }
+    });
+  </script>
+</body>
+</html>
