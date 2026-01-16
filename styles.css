@@ -375,12 +375,37 @@ h2::after {
    FOUNDERS SECTION
    ============================================ */
 
-.founders-grid {
+/* Founders and Core Leaders Grids */
+.founders-grid,
+.leaders-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
     gap: 40px;
     margin-top: 50px;
 }
+
+/* Founders – usually 2x2 or auto-fit is fine */
+.founders-grid {
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+/* Core Leaders – 3x3 on desktop */
+.leaders-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+/* Responsive: 2 columns on tablet, 1 on mobile */
+@media (max-width: 992px) {
+    .leaders-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 600px) {
+    .leaders-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
 
 .founder-card,
 .leader-card {
