@@ -68,9 +68,9 @@ body {
 }
 
 .logo-img {
-    height: 80px;
+    height: 120px;
     width: auto;
-  margin-left: 100px;
+  margin-left: 10px;
 }
 
 .nav-menu {
@@ -1220,7 +1220,7 @@ h2::after {
     }
 
     .logo-img {
-        height: 80px;
+        height: 120px;
       margin-left: 0px;
     }
 }
