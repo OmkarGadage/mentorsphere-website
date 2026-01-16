@@ -450,7 +450,7 @@ h2::after {
 
 .senior-mentor-card {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 3fr 1fr;
     gap: 50px;
     align-items: center;
     background: var(--light-color);
@@ -1138,6 +1138,7 @@ h2::after {
 
     .why-grid,
     .offer-grid,
+    .founders-grid,
     .leaders-grid,
     .testimonials-grid,
     .gallery-grid,
