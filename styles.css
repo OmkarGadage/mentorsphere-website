@@ -216,6 +216,148 @@ body {
 }
 
 /* ============================================
+   TESTIMONIALS CAROUSEL
+   ============================================ */
+
+.testimonials-carousel {
+    padding: 80px 0;
+    background: linear-gradient(180deg, #f8f9fa 0%, var(--light-color) 100%);
+    position: relative;
+}
+
+.testimonials-carousel h2 {
+    text-align: center;
+    font-size: 2.2rem;
+    margin-bottom: 40px;
+    color: var(--primary-color);
+}
+
+/* Outer track with arrows */
+.testimonial-track {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    position: relative;
+}
+
+/* Viewport that shows 3 cards */
+.testimonial-window {
+    overflow: hidden;
+    flex: 1;
+    position: relative;
+}
+
+/* Faded edges */
+.testimonial-window::before,
+.testimonial-window::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 80px;
+    height: 100%;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.testimonial-window::before {
+    left: 0;
+    background: linear-gradient(to right, rgba(248, 249, 250, 1), rgba(248, 249, 250, 0));
+}
+
+.testimonial-window::after {
+    right: 0;
+    background: linear-gradient(to left, rgba(248, 249, 250, 1), rgba(248, 249, 250, 0));
+}
+
+/* Horizontal list of cards */
+.testimonial-list {
+    display: flex;
+    gap: 24px;
+    padding: 16px 24px;
+    transition: transform 0.4s ease;
+}
+
+/* Each card */
+.testimonial-card {
+    flex: 0 0 calc(33.333% - 16px); /* 3 visible cards */
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 24px 22px;
+    box-shadow: 0 18px 40px rgba(15, 23, 42, 0.12);
+    opacity: 0.5;
+    transform: scale(0.96);
+    transition: transform 0.3s ease, opacity 0.3s ease, box-shadow 0.3s ease;
+}
+
+.testimonial-card.active {
+    opacity: 1;
+    transform: scale(1);
+    box-shadow: 0 22px 60px rgba(15, 23, 42, 0.18);
+}
+
+/* Card content */
+.testimonial-text {
+    font-size: 0.98rem;
+    color: var(--light-text);
+    line-height: 1.7;
+    margin-bottom: 16px;
+}
+
+.testimonial-name {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-bottom: 4px;
+}
+
+.testimonial-role {
+    font-size: 0.9rem;
+    color: var(--secondary-color);
+}
+
+/* Arrows */
+.testimonial-nav {
+    width: 40px;
+    height: 40px;
+    border-radius: 999px;
+    border: none;
+    background: #ffffff;
+    color: var(--primary-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 10px 25px rgba(15, 23, 42, 0.15);
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.testimonial-nav:hover {
+    transform: translateY(-2px);
+    background: var(--primary-color);
+    color: #ffffff;
+    box-shadow: 0 14px 30px rgba(15, 23, 42, 0.22);
+}
+
+/* Responsive: 1–2 cards on small screens */
+@media (max-width: 992px) {
+    .testimonial-card {
+        flex: 0 0 calc(50% - 16px); /* 2 cards */
+    }
+}
+
+@media (max-width: 640px) {
+    .testimonial-card {
+        flex: 0 0 100%; /* 1 card */
+    }
+
+    .testimonial-window::before,
+    .testimonial-window::after {
+        width: 40px;
+    }
+}
+
+
+/* ============================================
    GENERAL SECTIONS
    ============================================ */
 section {
