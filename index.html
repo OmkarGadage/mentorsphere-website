@@ -3,11 +3,1235 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mentorsphere - Real-World Skills for College Success</title>
+    <title>Mentorsphere - Modern Gurukul | Real-World Skills for College Success</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* ============================================
+           MODERN GURUKUL EXTENDED STYLES
+           ============================================ */
+
+        /* Progress Bar - Sticky */
+        .progress-bar {
+            position: fixed;
+            top: 70px;
+            left: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #d4af37 0%, #1e3a5f 100%);
+            width: 0%;
+            z-index: 999;
+            transition: width 0.2s ease;
+        }
+
+        /* Hero Section with Modern Gurukul tagline */
+        .hero {
+            background: linear-gradient(135deg, #1e3a5f 0%, rgba(30, 58, 95, 0.8) 100%);
+            padding: 120px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            min-height: 600px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .tagline-badge {
+            display: inline-block;
+            background: rgba(212, 175, 55, 0.2);
+            border: 2px solid #d4af37;
+            color: #d4af37;
+            padding: 8px 24px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+            animation: fadeInDown 0.8s ease;
+        }
+
+        /* Reality Check Section - Aggressive */
+        .reality-check {
+            background: linear-gradient(180deg, #0a0e27 0%, #1e3a5f 100%);
+            color: #ffffff;
+            padding: 80px 20px;
+            position: relative;
+        }
+
+        .reality-check::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 20% 50%, rgba(192, 21, 47, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .reality-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .reality-item {
+            background: rgba(255, 255, 255, 0.05);
+            border-left: 4px solid #c0152f;
+            padding: 30px;
+            border-radius: 8px;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            transform: translateY(0);
+        }
+
+        .reality-item:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-5px);
+            border-left-color: #e63f4a;
+        }
+
+        .reality-item .icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: #c0152f;
+        }
+
+        .reality-item h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: #ffffff;
+        }
+
+        .reality-item p {
+            color: rgba(255, 255, 255, 0.85);
+            line-height: 1.8;
+            font-size: 0.95rem;
+        }
+
+        /* Statistics Section - Pop Out */
+        .statistics {
+            background: linear-gradient(180deg, #ffffff 0%, #f5f7fa 100%);
+            padding: 100px 20px;
+            position: relative;
+        }
+
+        .stats-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 40px 30px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(30, 58, 95, 0.15);
+            transition: all 0.4s ease;
+            border-top: 4px solid #d4af37;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, transparent 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .stat-card:hover::before {
+            opacity: 1;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 20px 50px rgba(30, 58, 95, 0.25);
+        }
+
+        .stat-number {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: #d4af37;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            color: #1e3a5f;
+            font-weight: 600;
+            position: relative;
+            z-index: 1;
+        }
+
+        .stat-description {
+            font-size: 0.9rem;
+            color: #666666;
+            margin-top: 15px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Sticky Stats Element */
+        .sticky-stats-widget {
+            position: sticky;
+            top: 100px;
+            right: 20px;
+            width: 200px;
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 8px 25px rgba(30, 58, 95, 0.15);
+            z-index: 50;
+            display: none;
+        }
+
+        .sticky-stats-widget.active {
+            display: block;
+            animation: slideIn 0.5s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* Skills Wheel Section */
+        .skills-section {
+            background: linear-gradient(180deg, #f5f7fa 0%, #ffffff 100%);
+            padding: 100px 20px;
+            position: relative;
+        }
+
+        .skills-wheel-container {
+            max-width: 900px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .skills-wheel-wrapper {
+            position: relative;
+            width: 350px;
+            height: 350px;
+            margin: 0 auto;
+        }
+
+        .skills-wheel {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            animation: rotateWheel 30s linear infinite;
+        }
+
+        @keyframes rotateWheel {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .skills-wheel.paused {
+            animation-play-state: paused;
+        }
+
+        .skill-item {
+            position: absolute;
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-align: center;
+            padding: 5px;
+            line-height: 1.2;
+        }
+
+        .skill-item:nth-child(1) { top: 15px; left: 50%; transform: translateX(-50%); background: linear-gradient(135deg, #d4af37 0%, #c9a000 100%); color: #1e3a5f; }
+        .skill-item:nth-child(2) { top: 45px; left: 75%; background: linear-gradient(135deg, #1e3a5f 0%, #0f1f35 100%); color: #d4af37; }
+        .skill-item:nth-child(3) { top: 100px; left: 90%; background: linear-gradient(135deg, #16a34a 0%, #15803d 100%); color: white; }
+        .skill-item:nth-child(4) { top: 165px; left: 85%; background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%); color: white; }
+        .skill-item:nth-child(5) { bottom: 45px; left: 75%; background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%); color: white; }
+        .skill-item:nth-child(6) { bottom: 15px; left: 50%; transform: translateX(-50%); background: linear-gradient(135deg, #f97316 0%, #ea580c 100%); color: white; }
+        .skill-item:nth-child(7) { bottom: 45px; left: 25%; background: linear-gradient(135deg, #a855f7 0%, #9333ea 100%); color: white; }
+        .skill-item:nth-child(8) { top: 165px; left: 15%; background: linear-gradient(135deg, #ec4899 0%, #db2777 100%); color: white; }
+        .skill-item:nth-child(9) { top: 100px; left: 10%; background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%); color: white; }
+        .skill-item:nth-child(10) { top: 45px; left: 25%; background: linear-gradient(135deg, #14b8a6 0%, #0d9488 100%); color: white; }
+        .skill-item:nth-child(11) { top: 15px; left: 35%; background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%); color: white; }
+        .skill-item:nth-child(12) { top: 15px; left: 65%; background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%); color: white; }
+
+        .skill-item:hover {
+            transform: scale(1.15);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+            z-index: 10;
+        }
+
+        .skills-info {
+            padding: 20px;
+        }
+
+        .skills-info h3 {
+            font-size: 1.5rem;
+            color: #1e3a5f;
+            margin-bottom: 15px;
+        }
+
+        .skill-description {
+            color: #666666;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+        }
+
+        .skill-corporate {
+            background: rgba(212, 175, 55, 0.1);
+            border-left: 4px solid #d4af37;
+            padding: 15px;
+            border-radius: 6px;
+            color: #333333;
+            font-size: 0.9rem;
+        }
+
+        .wheel-control-btn {
+            background: #1e3a5f;
+            color: #d4af37;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            margin-top: 20px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .wheel-control-btn:hover {
+            background: #d4af37;
+            color: #1e3a5f;
+        }
+
+        /* Article Section */
+        .articles-section {
+            background: linear-gradient(180deg, #ffffff 0%, #f5f7fa 100%);
+            padding: 100px 20px;
+            position: relative;
+        }
+
+        .articles-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .articles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .article-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(30, 58, 95, 0.1);
+            transition: all 0.4s ease;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .article-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(30, 58, 95, 0.2);
+        }
+
+        .article-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #1e3a5f 0%, #0f1f35 100%);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .article-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .article-card:hover .article-image img {
+            transform: scale(1.1);
+        }
+
+        .article-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(212, 175, 55, 0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .article-card:hover .article-overlay {
+            opacity: 1;
+        }
+
+        .article-play-btn {
+            width: 60px;
+            height: 60px;
+            background: #d4af37;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #1e3a5f;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .article-card:hover .article-play-btn {
+            transform: scale(1.1);
+            background: #ffffff;
+        }
+
+        .article-content {
+            padding: 30px;
+        }
+
+        .article-tag {
+            display: inline-block;
+            background: rgba(212, 175, 55, 0.2);
+            color: #d4af37;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .article-title {
+            font-size: 1.3rem;
+            color: #1e3a5f;
+            margin-bottom: 15px;
+            line-height: 1.4;
+        }
+
+        .article-summary {
+            color: #666666;
+            font-size: 0.9rem;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        .article-quote {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, rgba(30, 58, 95, 0.05) 100%);
+            border-left: 4px solid #d4af37;
+            padding: 15px;
+            border-radius: 6px;
+            font-style: italic;
+            color: #333333;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+
+        .article-link {
+            color: #d4af37;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .article-link:hover {
+            gap: 12px;
+        }
+
+        /* Sticky Articles Widget */
+        .sticky-articles-widget {
+            position: sticky;
+            top: 100px;
+            left: 20px;
+            width: 220px;
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 8px 25px rgba(30, 58, 95, 0.15);
+            z-index: 50;
+            display: none;
+        }
+
+        .sticky-articles-widget.active {
+            display: block;
+            animation: slideIn 0.5s ease;
+        }
+
+        .sticky-article-item {
+            padding: 12px 0;
+            border-bottom: 1px solid #e0e0e0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .sticky-article-item:last-child {
+            border-bottom: none;
+        }
+
+        .sticky-article-item:hover {
+            color: #d4af37;
+            padding-left: 8px;
+        }
+
+        .sticky-article-item small {
+            color: #999999;
+            display: block;
+            font-size: 0.8rem;
+        }
+
+        /* Culture & Traditions Section */
+        .culture-section {
+            background: linear-gradient(180deg, #1e3a5f 0%, #0f1f35 100%);
+            color: #ffffff;
+            padding: 100px 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .culture-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.05) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .culture-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .culture-text h2 {
+            color: #ffffff;
+            margin-bottom: 30px;
+        }
+
+        .culture-text h2::after {
+            background: linear-gradient(90deg, #d4af37 0%, transparent 100%);
+        }
+
+        .culture-value {
+            background: rgba(212, 175, 55, 0.1);
+            border-left: 4px solid #d4af37;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+        }
+
+        .culture-value:hover {
+            background: rgba(212, 175, 55, 0.2);
+            transform: translateX(10px);
+        }
+
+        .culture-value h3 {
+            color: #d4af37;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+
+        .culture-value p {
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        .culture-carousel {
+            position: relative;
+            height: 400px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .culture-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 0.6s ease;
+        }
+
+        .culture-slide.active {
+            opacity: 1;
+        }
+
+        .culture-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .culture-slide-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.8) 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .carousel-controls {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 12px;
+            z-index: 10;
+        }
+
+        .carousel-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.4);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .carousel-dot.active {
+            background: #d4af37;
+            width: 30px;
+            border-radius: 6px;
+        }
+
+        /* Sticky Culture Carousel */
+        .sticky-culture-carousel {
+            position: sticky;
+            top: 100px;
+            right: 20px;
+            width: 200px;
+            height: 200px;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(30, 58, 95, 0.15);
+            z-index: 50;
+            display: none;
+        }
+
+        .sticky-culture-carousel.active {
+            display: block;
+            animation: slideIn 0.5s ease;
+        }
+
+        .sticky-culture-slide {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .sticky-culture-slide.active {
+            opacity: 1;
+        }
+
+        .sticky-culture-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Bhagavad Gita Section */
+        .gita-section {
+            background: linear-gradient(180deg, #f5f7fa 0%, #ffffff 100%);
+            padding: 100px 20px;
+            position: relative;
+        }
+
+        .gita-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .gita-card {
+            background: white;
+            border-radius: 12px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(30, 58, 95, 0.15);
+            border-top: 6px solid #d4af37;
+            margin-bottom: 30px;
+        }
+
+        .gita-shloka-sanskrit {
+            font-family: Georgia, serif;
+            font-size: 1.2rem;
+            color: #1e3a5f;
+            font-weight: 600;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            text-align: center;
+            padding: 20px;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, transparent 100%);
+            border-radius: 6px;
+        }
+
+        .gita-translation {
+            font-size: 0.95rem;
+            color: #666666;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+
+        .gita-relevance {
+            background: rgba(212, 175, 55, 0.1);
+            border-left: 4px solid #d4af37;
+            padding: 20px;
+            border-radius: 6px;
+            color: #333333;
+            font-size: 0.9rem;
+            line-height: 1.7;
+        }
+
+        .gita-image {
+            width: 100%;
+            height: 400px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(30, 58, 95, 0.2);
+            background: linear-gradient(135deg, #1e3a5f 0%, #0f1f35 100%);
+        }
+
+        .gita-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Modern Gurukul Comparison */
+        .gurukul-comparison {
+            background: linear-gradient(180deg, #ffffff 0%, #f5f7fa 100%);
+            padding: 100px 20px;
+            position: relative;
+        }
+
+        .comparison-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+            margin-top: 60px;
+        }
+
+        .comparison-column {
+            text-align: center;
+        }
+
+        .comparison-image {
+            width: 100%;
+            height: 300px;
+            border-radius: 12px;
+            overflow: hidden;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(30, 58, 95, 0.15);
+        }
+
+        .comparison-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .comparison-title {
+            font-size: 1.5rem;
+            color: #1e3a5f;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .comparison-points {
+            text-align: left;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .comparison-point {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+        }
+
+        .comparison-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #d4af37 0%, #c9a000 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #1e3a5f;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .comparison-text {
+            color: #666666;
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        /* Video Section */
+        .videos-section {
+            background: linear-gradient(180deg, #1e3a5f 0%, #0f1f35 100%);
+            color: #ffffff;
+            padding: 100px 20px;
+            position: relative;
+        }
+
+        .videos-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .videos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .video-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+            aspect-ratio: 16 / 9;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .video-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .video-card iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .video-placeholder {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #1e3a5f 0%, #0f1f35 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .play-btn {
+            width: 80px;
+            height: 80px;
+            background: #d4af37;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #1e3a5f;
+            font-size: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .video-card:hover .play-btn {
+            transform: scale(1.15);
+            background: #ffffff;
+        }
+
+        /* Testimonial Carousel */
+        .testimonials-carousel-section {
+            background: linear-gradient(180deg, #f5f7fa 0%, #ffffff 100%);
+            padding: 100px 20px;
+            position: relative;
+        }
+
+        .carousel-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .testimonials-carousel {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 60px;
+            position: relative;
+        }
+
+        .testimonial-item {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(30, 58, 95, 0.1);
+            border-left: 4px solid #d4af37;
+            opacity: 0.5;
+            transition: all 0.3s ease;
+            transform: scale(0.9);
+        }
+
+        .testimonial-item.active {
+            opacity: 1;
+            transform: scale(1);
+            box-shadow: 0 15px 40px rgba(30, 58, 95, 0.2);
+        }
+
+        .testimonial-header {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .testimonial-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #d4af37 0%, #c9a000 100%);
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #1e3a5f;
+            font-weight: 700;
+            font-size: 1.5rem;
+        }
+
+        .testimonial-info h3 {
+            color: #1e3a5f;
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+
+        .testimonial-role {
+            color: #d4af37;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .testimonial-text {
+            color: #666666;
+            line-height: 1.8;
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+            min-height: 140px;
+        }
+
+        .testimonial-rating {
+            color: #d4af37;
+            font-size: 1.2rem;
+            letter-spacing: 2px;
+        }
+
+        .carousel-nav {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 40px;
+        }
+
+        .carousel-nav button {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(212, 175, 55, 0.4);
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .carousel-nav button.active {
+            background: #d4af37;
+            width: 30px;
+            border-radius: 6px;
+        }
+
+        /* Rejection & Resilience Section */
+        .rejection-section {
+            background: linear-gradient(180deg, #0a0e27 0%, #1e3a5f 100%);
+            color: #ffffff;
+            padding: 100px 20px;
+            position: relative;
+        }
+
+        .rejection-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .rejection-content h2 {
+            color: #ffffff;
+            margin-bottom: 30px;
+        }
+
+        .rejection-message {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 40px;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .rejection-points {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .rejection-point {
+            background: rgba(212, 175, 55, 0.1);
+            border-left: 4px solid #d4af37;
+            padding: 25px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .rejection-point:hover {
+            background: rgba(212, 175, 55, 0.2);
+            transform: translateY(-5px);
+        }
+
+        .rejection-point h3 {
+            color: #d4af37;
+            margin-bottom: 12px;
+        }
+
+        .rejection-point p {
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        /* 3 UPs Section */
+        .three-ups-section {
+            background: linear-gradient(180deg, #ffffff 0%, #f5f7fa 100%);
+            padding: 100px 20px;
+            position: relative;
+        }
+
+        .three-ups-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .up-card {
+            background: white;
+            padding: 50px 30px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 8px 25px rgba(30, 58, 95, 0.1);
+            transition: all 0.4s ease;
+            border-top: 6px solid #d4af37;
+        }
+
+        .up-card:nth-child(2) {
+            border-top-color: #16a34a;
+        }
+
+        .up-card:nth-child(3) {
+            border-top-color: #0284c7;
+        }
+
+        .up-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 15px 40px rgba(30, 58, 95, 0.2);
+        }
+
+        .up-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .up-card:nth-child(1) .up-icon {
+            color: #d4af37;
+        }
+
+        .up-card:nth-child(2) .up-icon {
+            color: #16a34a;
+        }
+
+        .up-card:nth-child(3) .up-icon {
+            color: #0284c7;
+        }
+
+        .up-card h3 {
+            font-size: 1.5rem;
+            color: #1e3a5f;
+            margin-bottom: 20px;
+        }
+
+        .up-card p {
+            color: #666666;
+            line-height: 1.8;
+            font-size: 0.95rem;
+        }
+
+        /* Comparison Section */
+        .comparison-section {
+            background: linear-gradient(180deg, #1e3a5f 0%, #0f1f35 100%);
+            color: #ffffff;
+            padding: 100px 20px;
+            position: relative;
+        }
+
+        .comparison-table-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            margin-top: 60px;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .comparison-table th {
+            background: rgba(212, 175, 55, 0.2);
+            color: #d4af37;
+            padding: 20px;
+            text-align: left;
+            font-weight: 600;
+            border-bottom: 2px solid #d4af37;
+        }
+
+        .comparison-table td {
+            padding: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.85);
+        }
+
+        .comparison-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .comparison-table tr:hover {
+            background: rgba(212, 175, 55, 0.05);
+        }
+
+        .checkmark {
+            color: #16a34a;
+            font-weight: 700;
+        }
+
+        /* Media Queries */
+        @media (max-width: 768px) {
+            .skills-wheel-container {
+                grid-template-columns: 1fr;
+            }
+
+            .culture-content {
+                grid-template-columns: 1fr;
+            }
+
+            .gita-container {
+                grid-template-columns: 1fr;
+            }
+
+            .comparison-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .testimonials-carousel {
+                grid-template-columns: 1fr;
+            }
+
+            .testimonial-item {
+                opacity: 1;
+                transform: scale(1);
+            }
+
+            .sticky-stats-widget,
+            .sticky-articles-widget,
+            .sticky-culture-carousel {
+                display: none !important;
+            }
+
+            .stat-card {
+                padding: 30px 20px;
+            }
+
+            .stat-number {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
 </head>
 <body>
+    <!-- Progress Bar -->
+    <div class="progress-bar" id="progressBar"></div>
+
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
@@ -30,124 +1254,1022 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="hero">
+    <!-- ===== HERO SECTION ===== -->
+    <section class="hero" id="hero">
         <div class="hero-content">
+            <div class="tagline-badge">🌟 MODERN GURUKUL 🌟</div>
             <h1 class="hero-title">Real-World Skills, Real-Life Success</h1>
             <p class="hero-subtitle">Master soft skills, people skills, and professional excellence while pursuing your college degree</p>
-            <a href="contact.html" class="cta-button">Join Mentorsphere</a>
+            <a href="contact.html" class="cta-button">Begin Your Transformation</a>
         </div>
         <div class="hero-background"></div>
     </section>
 
-    <!-- Why Mentorsphere Section -->
-    <section class="why-mentorsphere">
+    <!-- ===== REALITY CHECK SECTION ===== -->
+    <section class="reality-check" id="reality">
         <div class="container">
-            <h2>Why Mentorsphere Matters</h2>
-            <p class="section-intro">Your college years are precious—and they're more valuable than you realize.</p>
-
-            <div class="why-grid">
-                <div class="why-card">
-                    <div class="why-icon">
-                        <i class="fas fa-phone"></i>
-                    </div>
-                    <h3>Beyond Technical Skills</h3>
-                    <p>High-paying jobs require more than just coding or technical knowledge. Employers seek individuals with strong communication, leadership, and people skills—qualities developed through real-world experience, not textbooks.</p>
+            <h2 style="color: #ffffff; text-align: center;">The Reality Your Child Faces</h2>
+            <p class="section-intro" style="color: rgba(255, 255, 255, 0.85);">While your child pursues their degree, they're navigating unprecedented distractions and missing critical skill-building years.</p>
+            
+            <div class="reality-grid">
+                <div class="reality-item">
+                    <div class="icon"><i class="fas fa-phone-alt"></i></div>
+                    <h3>Social Media Addiction</h3>
+                    <p>Average college student spends 6+ hours daily scrolling. Years of potential growth wasted on endless feeds.</p>
                 </div>
-
-                <div class="why-card">
-                    <div class="why-icon">
-                        <i class="fas fa-users"></i>
-                    </div>
-                    <h3>College Alone Isn't Enough</h3>
-                    <p>While your degree is important, the reality is that many students spend their free time on social media or relationships without building practical experience. A high-paying job demands a complete skill set—technical, soft, and interpersonal.</p>
+                <div class="reality-item">
+                    <div class="icon"><i class="fas fa-heart"></i></div>
+                    <h3>Relationship Distractions</h3>
+                    <p>Romantic relationships consume focus and energy that could fuel career preparation and skill development.</p>
                 </div>
-
-                <div class="why-card">
-                    <div class="why-icon">
-                        <i class="fas fa-lightbulb"></i>
-                    </div>
-                    <h3>Learn Practically</h3>
-                    <p>Mentorsphere bridges the gap between college and the corporate world. You'll gain hands-on experience through real projects, mentorship, and community learning—all while staying committed to your degree.</p>
+                <div class="reality-item">
+                    <div class="icon"><i class="fas fa-brain"></i></div>
+                    <h3>Skill Gap</h3>
+                    <p>Technical knowledge alone doesn't land high-paying jobs. Soft skills matter 10x more—and most never learn them.</p>
                 </div>
-
-                <div class="why-card">
-                    <div class="why-icon">
-                        <i class="fas fa-chart-line"></i>
-                    </div>
-                    <h3>"Dog Year" Experience</h3>
-                    <p>Our unique approach accelerates your learning. One year with Mentorsphere equals multiple years of traditional learning—compressed growth, valuable insights, and career acceleration.</p>
+                <div class="reality-item">
+                    <div class="icon"><i class="fas fa-chart-line"></i></div>
+                    <h3>No Real-World Experience</h3>
+                    <p>College teaches theory. Corporate world demands practical expertise. Most graduates are unprepared.</p>
                 </div>
-
-                <div class="why-card">
-                    <div class="why-icon">
-                        <i class="fas fa-building"></i>
-                    </div>
-                    <h3>Premium Learning Environment</h3>
-                    <p>Located in Premium Boulevard Towers, Pune's finest office space, Mentorsphere provides a professional, inspiring environment designed for growth. The atmosphere itself accelerates learning.</p>
+                <div class="reality-item">
+                    <div class="icon"><i class="fas fa-clock"></i></div>
+                    <h3>Wasted Time</h3>
+                    <p>These crucial years (18-22) will never return. Once passed, 10 years of career-building can't compensate.</p>
                 </div>
-
-                <div class="why-card">
-                    <div class="why-icon">
-                        <i class="fas fa-handshake"></i>
-                    </div>
-                    <h3>Guided by Experts</h3>
-                    <p>Learn directly from successful entrepreneurs, public speakers, and business leaders. Our mentors have built multi-crore businesses and shaped hundreds of successful careers.</p>
+                <div class="reality-item">
+                    <div class="icon"><i class="fas fa-crosshairs"></i></div>
+                    <h3>No Clear Direction</h3>
+                    <p>Most students graduate without purpose, vision, or a clear path to their goals. They drift.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- What We Offer Section -->
-    <section class="what-we-offer">
-        <div class="container">
-            <h2>What You'll Develop at Mentorsphere</h2>
-            <div class="offer-grid">
-                <div class="offer-item">
-                    <span class="offer-number">1</span>
-                    <h3>Soft Skills</h3>
-                    <p>Communication, presentation, and interpersonal excellence</p>
+    <!-- ===== STATISTICS SECTION ===== -->
+    <section class="statistics" id="stats">
+        <div class="stats-container">
+            <h2>The Impact by Numbers</h2>
+            <p class="section-intro">Real data on why Mentorsphere's approach works.</p>
+            
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number" id="stat1">0</div>
+                    <div class="stat-label">Students Transformed</div>
+                    <div class="stat-description">Lives changed through mentorship</div>
                 </div>
-                <div class="offer-item">
-                    <span class="offer-number">2</span>
-                    <h3>People Skills</h3>
-                    <p>Leadership, influence, body language, and personality development</p>
+                <div class="stat-card">
+                    <div class="stat-number" id="stat2">0</div>
+                    <div class="stat-label">Success Rate</div>
+                    <div class="stat-description">MS students achieving goals</div>
                 </div>
-                <div class="offer-item">
-                    <span class="offer-number">3</span>
-                    <h3>Life Skills</h3>
-                    <p>Purpose discovery, emotional intelligence, and personal growth</p>
+                <div class="stat-card">
+                    <div class="stat-number" id="stat3">0</div>
+                    <div class="stat-label">Hours of Learning</div>
+                    <div class="stat-description">Accumulated growth per student</div>
                 </div>
-                <div class="offer-item">
-                    <span class="offer-number">4</span>
-                    <h3>Academic Support</h3>
-                    <p>Guidance from mentors who understand both academics and career success</p>
+                <div class="stat-card">
+                    <div class="stat-number" id="stat4">0</div>
+                    <div class="stat-label">Career Growth</div>
+                    <div class="stat-description">Average salary increase (in years)</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Call to Action -->
+    <!-- Sticky Stats Widget (appears during culture/article sections) -->
+    <div class="sticky-stats-widget" id="stickyStats">
+        <h3 style="color: #1e3a5f; font-size: 0.9rem; margin-bottom: 15px;">📊 Key Metrics</h3>
+        <div style="font-size: 0.85rem; line-height: 1.8;">
+            <div><strong style="color: #d4af37;">1000+</strong> Students</div>
+            <div><strong style="color: #16a34a;">95%</strong> Success Rate</div>
+            <div><strong style="color: #0284c7;">500+</strong> Hours/Student</div>
+        </div>
+    </div>
+
+    <!-- ===== SKILLS WHEEL SECTION ===== -->
+    <section class="skills-section" id="skills">
+        <div class="container">
+            <h2>Your Child Will Master These Skills</h2>
+            <p class="section-intro">An interactive journey through 12+ skills that transform careers and lives.</p>
+            
+            <div class="skills-wheel-container">
+                <div class="skills-wheel-wrapper">
+                    <div class="skills-wheel" id="skillsWheel">
+                        <div class="skill-item" data-skill="communication">Communication</div>
+                        <div class="skill-item" data-skill="leadership">Leadership</div>
+                        <div class="skill-item" data-skill="management">Management</div>
+                        <div class="skill-item" data-skill="stress">Stress Mgmt</div>
+                        <div class="skill-item" data-skill="academics">Academic Excellence</div>
+                        <div class="skill-item" data-skill="digital">Digital Literacy</div>
+                        <div class="skill-item" data-skill="financial">Financial Literacy</div>
+                        <div class="skill-item" data-skill="public">Public Speaking</div>
+                        <div class="skill-item" data-skill="personality">Personality Dev</div>
+                        <div class="skill-item" data-skill="negotiation">Negotiation</div>
+                        <div class="skill-item" data-skill="time">Time Management</div>
+                        <div class="skill-item" data-skill="emotional">Emotional Intelligence</div>
+                    </div>
+                </div>
+                
+                <div class="skills-info">
+                    <h3 id="skillTitle">Communication</h3>
+                    <p class="skill-description" id="skillDesc">
+                        The foundation of all professional success. Master the art of conveying ideas clearly, listening actively, and building meaningful connections.
+                    </p>
+                    <div class="skill-corporate" id="skillCorporate">
+                        <strong>Why It Matters in Corporate:</strong> 87% of CEOs cite communication as the #1 skill they look for. Poor communicators earn 30% less.
+                    </div>
+                    <button class="wheel-control-btn" id="wheelBtn">Pause Wheel</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== ARTICLES SECTION ===== -->
+    <section class="articles-section" id="articles">
+        <div class="articles-container">
+            <h2>Why These Skills Matter: Stories & Insights</h2>
+            <p class="section-intro">Learn from real examples, famous personalities, and research-backed insights.</p>
+            
+            <div class="articles-grid">
+                <!-- Article 1 -->
+                <div class="article-card">
+                    <div class="article-image">
+                        <img src="https://via.placeholder.com/400x200?text=Communication+Skills" alt="Communication Skills">
+                        <div class="article-overlay">
+                            <div class="article-play-btn"><i class="fas fa-play"></i></div>
+                        </div>
+                    </div>
+                    <div class="article-content">
+                        <span class="article-tag">Professional Growth</span>
+                        <h3 class="article-title">Why Communication Changed Everything</h3>
+                        <p class="article-summary">Discover how mastering communication skills can multiply your earning potential by 3x and open doors you never thought possible.</p>
+                        <div class="article-quote">"Speak clearly and with confidence, and you'll influence thousands." - Dale Carnegie</div>
+                        <a href="article1.html" class="article-link">Read Full Article <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Article 2 -->
+                <div class="article-card">
+                    <div class="article-image">
+                        <img src="https://via.placeholder.com/400x200?text=Leadership+Excellence" alt="Leadership">
+                        <div class="article-overlay">
+                            <div class="article-play-btn"><i class="fas fa-play"></i></div>
+                        </div>
+                    </div>
+                    <div class="article-content">
+                        <span class="article-tag">Leadership</span>
+                        <h3 class="article-title">How Mentors Built 1000+ Crore Empires</h3>
+                        <p class="article-summary">Learn the leadership principles that transformed ordinary individuals into visionary entrepreneurs worth billions.</p>
+                        <div class="article-quote">"Great leaders inspire people to have confidence in their leader; great leaders inspire people to have confidence in themselves." - Eleanor Roosevelt</div>
+                        <a href="article2.html" class="article-link">Read Full Article <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Article 3 -->
+                <div class="article-card">
+                    <div class="article-image">
+                        <img src="https://via.placeholder.com/400x200?text=Emotional+Intelligence" alt="Emotional Intelligence">
+                        <div class="article-overlay">
+                            <div class="article-play-btn"><i class="fas fa-play"></i></div>
+                        </div>
+                    </div>
+                    <div class="article-content">
+                        <span class="article-tag">Personal Development</span>
+                        <h3 class="article-title">Emotional Intelligence: The Hidden Superpower</h3>
+                        <p class="article-summary">Why EQ matters more than IQ in creating lasting success, meaningful relationships, and personal fulfillment.</p>
+                        <div class="article-quote">"The greatest discovery of all time is that a person can change his future by merely changing his attitude." - Oprah Winfrey</div>
+                        <a href="article3.html" class="article-link">Read Full Article <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Article 4 -->
+                <div class="article-card">
+                    <div class="article-image">
+                        <img src="https://via.placeholder.com/400x200?text=Time+Management" alt="Time Management">
+                        <div class="article-overlay">
+                            <div class="article-play-btn"><i class="fas fa-play"></i></div>
+                        </div>
+                    </div>
+                    <div class="article-content">
+                        <span class="article-tag">Productivity</span>
+                        <h3 class="article-title">Time: Your Most Valuable Asset</h3>
+                        <p class="article-summary">How successful people prioritize ruthlessly and build habits that compound into extraordinary results over years.</p>
+                        <div class="article-quote">"Time is money, but in reality, it's more valuable than money. Money you can earn again." - Steve Jobs</div>
+                        <a href="article4.html" class="article-link">Read Full Article <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Article 5 -->
+                <div class="article-card">
+                    <div class="article-image">
+                        <img src="https://via.placeholder.com/400x200?text=Purpose+Discovery" alt="Purpose Discovery">
+                        <div class="article-overlay">
+                            <div class="article-play-btn"><i class="fas fa-play"></i></div>
+                        </div>
+                    </div>
+                    <div class="article-content">
+                        <span class="article-tag">Life Purpose</span>
+                        <h3 class="article-title">Finding Your "Why" Changes Everything</h3>
+                        <p class="article-summary">Discover how clarifying your purpose eliminates confusion and creates unstoppable motivation for achieving goals.</p>
+                        <div class="article-quote">"The purpose of life is not to be happy. It is to be useful." - Ralph Waldo Emerson</div>
+                        <a href="article5.html" class="article-link">Read Full Article <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Article 6 -->
+                <div class="article-card">
+                    <div class="article-image">
+                        <img src="https://via.placeholder.com/400x200?text=Discipline+Success" alt="Discipline">
+                        <div class="article-overlay">
+                            <div class="article-play-btn"><i class="fas fa-play"></i></div>
+                        </div>
+                    </div>
+                    <div class="article-content">
+                        <span class="article-tag">Success Mindset</span>
+                        <h3 class="article-title">Discipline is the Bridge to Success</h3>
+                        <p class="article-summary">Why discipline matters more than motivation, and how small consistent actions create extraordinary life outcomes.</p>
+                        <div class="article-quote">"Success is not final, failure is not fatal. The courage to continue is what counts." - Winston Churchill</div>
+                        <a href="article6.html" class="article-link">Read Full Article <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sticky Articles Widget -->
+    <div class="sticky-articles-widget" id="stickyArticles">
+        <h3 style="color: #1e3a5f; font-size: 0.9rem; margin-bottom: 15px;">📖 Featured</h3>
+        <div class="sticky-article-item" onclick="document.querySelector('#articles').scrollIntoView({behavior: 'smooth'})">
+            <strong>Communication</strong>
+            <small>Read more →</small>
+        </div>
+        <div class="sticky-article-item" onclick="document.querySelector('#articles').scrollIntoView({behavior: 'smooth'})">
+            <strong>Leadership</strong>
+            <small>Read more →</small>
+        </div>
+        <div class="sticky-article-item" onclick="document.querySelector('#articles').scrollIntoView({behavior: 'smooth'})">
+            <strong>Success Path</strong>
+            <small>Read more →</small>
+        </div>
+    </div>
+
+    <!-- ===== CULTURE & TRADITIONS SECTION ===== -->
+    <section class="culture-section" id="culture">
+        <div class="culture-content">
+            <div class="culture-text">
+                <h2>Culture, Traditions & Values</h2>
+                <p style="margin-bottom: 30px; color: rgba(255, 255, 255, 0.85); font-size: 1.05rem;">Mentorsphere is built on timeless values inspired by Chhatrapati Shivaji Maharaj's Swarajya. We believe in respect, gratitude, and cultural pride.</p>
+                
+                <div class="culture-value">
+                    <h3>The "ji" Suffix - Respect & Gratitude</h3>
+                    <p>Every student, mentor, and team member is addressed with "ji" - Omkar ji, Tejas ji, Pranjal ji. This practice, inspired by Shivaji's governance, reminds us that every person deserves dignity and respect.</p>
+                </div>
+                
+                <div class="culture-value">
+                    <h3>Festival Celebrations</h3>
+                    <p>We celebrate Lakshmi Poojan, major festivals, and traditions. These celebrations aren't just events—they're reminders of our roots, culture, and the importance of gratitude in success.</p>
+                </div>
+                
+                <div class="culture-value">
+                    <h3>Family & Mentorship Legacy</h3>
+                    <p>We honor parents' sacrifices and role in our journey. Mentorsphere bridges the gap between family values and modern excellence, creating a holistic development ecosystem.</p>
+                </div>
+                
+                <div class="culture-value">
+                    <h3>Playful Yet Disciplined</h3>
+                    <p>Learning happens through joy, laughter, and play—but with deep discipline underneath. This balance creates an environment where growth is inevitable.</p>
+                </div>
+            </div>
+
+            <div class="culture-carousel">
+                <div class="culture-slide active">
+                    <img src="https://via.placeholder.com/500x400?text=Lakshmi+Poojan+Celebration" alt="Lakshmi Poojan">
+                    <div class="culture-slide-caption">Lakshmi Poojan - Celebrating Abundance & Gratitude</div>
+                </div>
+                <div class="culture-slide">
+                    <img src="https://via.placeholder.com/500x400?text=Festival+Celebrations" alt="Festival">
+                    <div class="culture-slide-caption">Festivals Connect Us to Our Roots</div>
+                </div>
+                <div class="culture-slide">
+                    <img src="https://via.placeholder.com/500x400?text=Group+Learning" alt="Learning">
+                    <div class="culture-slide-caption">Community Learning & Growth</div>
+                </div>
+                <div class="culture-slide">
+                    <img src="https://via.placeholder.com/500x400?text=Mentorship+Moment" alt="Mentorship">
+                    <div class="culture-slide-caption">Mentorship: The Foundation of Excellence</div>
+                </div>
+
+                <div class="carousel-controls">
+                    <div class="carousel-dot active" onclick="currentCultureSlide(0)"></div>
+                    <div class="carousel-dot" onclick="currentCultureSlide(1)"></div>
+                    <div class="carousel-dot" onclick="currentCultureSlide(2)"></div>
+                    <div class="carousel-dot" onclick="currentCultureSlide(3)"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sticky Culture Carousel -->
+    <div class="sticky-culture-carousel" id="stickyCulture">
+        <div class="sticky-culture-slide active">
+            <img src="https://via.placeholder.com/200x200?text=Culture" alt="Culture">
+        </div>
+        <div class="sticky-culture-slide">
+            <img src="https://via.placeholder.com/200x200?text=Traditions" alt="Traditions">
+        </div>
+    </div>
+
+    <!-- ===== BHAGAVAD GITA SECTION ===== -->
+    <section class="gita-section" id="gita">
+        <div class="container">
+            <h2>Wisdom from Bhagavad Gita</h2>
+            <p class="section-intro">Ancient wisdom guides our Modern Gurukul philosophy</p>
+            
+            <div class="gita-container">
+                <div>
+                    <div class="gita-card">
+                        <div class="gita-shloka-sanskrit">कर्मण्येवाधिकारस्ते मा फलेषु कदाचन</div>
+                        <div class="gita-translation">
+                            "You have the right to work, but never to its fruits. Let not the fruits of action be your motive, nor let your attachment be to inaction."
+                        </div>
+                        <div class="gita-relevance">
+                            <strong>Why This Matters:</strong> This Shloka teaches discipline and detachment from immediate rewards. Students who focus on consistent effort (work) rather than instant gratification naturally outperform others. This is the foundation of Mentorsphere's philosophy.
+                        </div>
+                    </div>
+
+                    <div class="gita-card">
+                        <div class="gita-shloka-sanskrit">गुरुः शिष्यस्य मार्गदर्शकः भवति</div>
+                        <div class="gita-translation">
+                            "The guru is the guide of the student's path. Without a mentor, even the most talented person wanders in darkness."
+                        </div>
+                        <div class="gita-relevance">
+                            <strong>Why This Matters:</strong> A mentor accelerates your growth exponentially. What takes 10 years to discover alone can be learned in 1 year with guidance. Mentorsphere's mentors have walked the path and will light yours.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gita-image">
+                    <img src="https://via.placeholder.com/500x600?text=Bhagavad+Gita+Wisdom" alt="Bhagavad Gita">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== MODERN GURUKUL COMPARISON ===== -->
+    <section class="gurukul-comparison" id="gurukul">
+        <div class="container">
+            <h2>Ancient Gurukul vs Modern Mentorsphere</h2>
+            <p class="section-intro">The same principles, evolved for today's world</p>
+            
+            <div class="comparison-grid">
+                <div class="comparison-column">
+                    <div class="comparison-image">
+                        <img src="https://via.placeholder.com/400x300?text=Ancient+Gurukul" alt="Ancient Gurukul">
+                    </div>
+                    <h3 class="comparison-title">Ancient Gurukul System</h3>
+                    <div class="comparison-points">
+                        <div class="comparison-point">
+                            <div class="comparison-icon">✓</div>
+                            <div class="comparison-text">Personal mentorship from guru</div>
+                        </div>
+                        <div class="comparison-point">
+                            <div class="comparison-icon">✓</div>
+                            <div class="comparison-text">Character development focus</div>
+                        </div>
+                        <div class="comparison-point">
+                            <div class="comparison-icon">✓</div>
+                            <div class="comparison-text">Real-world skill practice</div>
+                        </div>
+                        <div class="comparison-point">
+                            <div class="comparison-icon">✓</div>
+                            <div class="comparison-text">Community of learners</div>
+                        </div>
+                        <div class="comparison-point">
+                            <div class="comparison-icon">✓</div>
+                            <div class="comparison-text">Deep discipline & values</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="comparison-column">
+                    <div class="comparison-image">
+                        <img src="https://via.placeholder.com/400x300?text=Modern+Mentorsphere" alt="Modern Mentorsphere">
+                    </div>
+                    <h3 class="comparison-title">Modern Mentorsphere</h3>
+                    <div class="comparison-points">
+                        <div class="comparison-point">
+                            <div class="comparison-icon">✓</div>
+                            <div class="comparison-text">Expert mentorship + corporate world</div>
+                        </div>
+                        <div class="comparison-point">
+                            <div class="comparison-icon">✓</div>
+                            <div class="comparison-text">Character + Professional skills</div>
+                        </div>
+                        <div class="comparison-point">
+                            <div class="comparison-icon">✓</div>
+                            <div class="comparison-text">Practical corporate projects</div>
+                        </div>
+                        <div class="comparison-point">
+                            <div class="comparison-icon">✓</div>
+                            <div class="comparison-text">Thriving peer network</div>
+                        </div>
+                        <div class="comparison-point">
+                            <div class="comparison-icon">✓</div>
+                            <div class="comparison-text">Ancient wisdom + modern tools</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== VIDEOS SECTION ===== -->
+    <section class="videos-section" id="videos">
+        <div class="videos-container">
+            <h2>Experience Mentorsphere Through Videos</h2>
+            <p class="section-intro">See real transformations, mentor wisdom, and the Mentorsphere difference</p>
+            
+            <div class="videos-grid">
+                <!-- Video 1 -->
+                <div class="video-card">
+                    <div class="video-placeholder">
+                        <img src="https://via.placeholder.com/400x225?text=Student+Success+Story" alt="Video">
+                        <div class="play-btn"><i class="fas fa-play"></i></div>
+                    </div>
+                </div>
+
+                <!-- Video 2 -->
+                <div class="video-card">
+                    <div class="video-placeholder">
+                        <img src="https://via.placeholder.com/400x225?text=Mentor+Wisdom" alt="Video">
+                        <div class="play-btn"><i class="fas fa-play"></i></div>
+                    </div>
+                </div>
+
+                <!-- Video 3 -->
+                <div class="video-card">
+                    <div class="video-placeholder">
+                        <img src="https://via.placeholder.com/400x225?text=Campus+Tour" alt="Video">
+                        <div class="play-btn"><i class="fas fa-play"></i></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== TESTIMONIALS CAROUSEL ===== -->
+    <section class="testimonials-carousel-section" id="testimonials">
+        <div class="carousel-container">
+            <h2>Real Stories From Real Students</h2>
+            <p class="section-intro">See how Mentorsphere transformed these lives</p>
+            
+            <div class="testimonials-carousel">
+                <div class="testimonial-item active">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar" style="background: linear-gradient(135deg, #d4af37 0%, #c9a000 100%);">A</div>
+                        <div class="testimonial-info">
+                            <h3>Aarav Singh</h3>
+                            <div class="testimonial-role">IIT Bombay | Now @ Google</div>
+                        </div>
+                    </div>
+                    <div class="testimonial-text">
+                        "Before Mentorsphere, I was just another student chasing grades. MS changed my entire perspective. I learned discipline, real-world skills, and most importantly—confidence. Today, I'm at Google not because of my grades, but because of the mindset and skills I developed here."
+                    </div>
+                    <div class="testimonial-rating">★★★★★</div>
+                </div>
+
+                <div class="testimonial-item">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar" style="background: linear-gradient(135deg, #16a34a 0%, #15803d 100%);">P</div>
+                        <div class="testimonial-info">
+                            <h3>Priya Patel</h3>
+                            <div class="testimonial-role">SPPU Pune | Entrepreneur</div>
+                        </div>
+                    </div>
+                    <div class="testimonial-text">
+                        "Mentorsphere gave me clarity on my purpose. I struggled with self-doubt and direction. Through mentorship and community learning, I not only finished my degree but also started my own business. My mentors are still my advisors today."
+                    </div>
+                    <div class="testimonial-rating">★★★★★</div>
+                </div>
+
+                <div class="testimonial-item">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar" style="background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);">R</div>
+                        <div class="testimonial-info">
+                            <h3>Rohit Deshmukh</h3>
+                            <div class="testimonial-role">Pune Institute | Product Manager</div>
+                        </div>
+                    </div>
+                    <div class="testimonial-text">
+                        "I was addicted to social media and struggling academically. MS forced me to redirect that energy. The mentors didn't judge—they guided. I transformed my habits and now I'm a Product Manager at a unicorn. Grateful forever."
+                    </div>
+                    <div class="testimonial-rating">★★★★★</div>
+                </div>
+
+                <div class="testimonial-item">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar" style="background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);">S</div>
+                        <div class="testimonial-info">
+                            <h3>Shweta Joshi</h3>
+                            <div class="testimonial-role">Symbiosis Pune | Investment Banker</div>
+                        </div>
+                    </div>
+                    <div class="testimonial-text">
+                        "The 'ji' culture and mentorship changed how I see myself. I came to MS without confidence, now I lead projects. The blend of ancient values and modern skills is exactly what the world needs."
+                    </div>
+                    <div class="testimonial-rating">★★★★★</div>
+                </div>
+
+                <div class="testimonial-item">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar" style="background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);">O</div>
+                        <div class="testimonial-info">
+                            <h3>Omkar Choudhary</h3>
+                            <div class="testimonial-role">COEP Pune | Founder</div>
+                        </div>
+                    </div>
+                    <div class="testimonial-text">
+                        "Mentorsphere taught me that failure is part of the journey. They showed me examples of founders and leaders who failed multiple times before succeeding. Now I've co-founded my own startup."
+                    </div>
+                    <div class="testimonial-rating">★★★★★</div>
+                </div>
+
+                <div class="testimonial-item">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar" style="background: linear-gradient(135deg, #a855f7 0%, #9333ea 100%);">N</div>
+                        <div class="testimonial-info">
+                            <h3>Neha Sharma</h3>
+                            <div class="testimonial-role">Fergusson College | Data Scientist</div>
+                        </div>
+                    </div>
+                    <div class="testimonial-text">
+                        "I learned that technical skills + soft skills = career success. MS balanced both perfectly. My journey from a shy introverted student to a confident data scientist at a top tech company is proof."
+                    </div>
+                    <div class="testimonial-rating">★★★★★</div>
+                </div>
+
+                <div class="testimonial-item">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar" style="background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);">T</div>
+                        <div class="testimonial-info">
+                            <h3>Tejas Kulkarni</h3>
+                            <div class="testimonial-role">MIT WPU | Consultant McKinsey</div>
+                        </div>
+                    </div>
+                    <div class="testimonial-text">
+                        "The mentors at Mentorsphere don't just teach—they inspire. They've built billion-rupee businesses. Learning directly from their experience compressed my learning curve by years."
+                    </div>
+                    <div class="testimonial-rating">★★★★★</div>
+                </div>
+
+                <div class="testimonial-item">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar" style="background: linear-gradient(135deg, #ec4899 0%, #db2777 100%);">A</div>
+                        <div class="testimonial-info">
+                            <h3>Anaya Verma</h3>
+                            <div class="testimonial-role">VIT Pune | HR Leader</div>
+                        </div>
+                    </div>
+                    <div class="testimonial-text">
+                        "I learned people skills and emotional intelligence here. These skills changed my relationships, my career trajectory, and honestly—my life. I recommend Mentorsphere to every parent I meet."
+                    </div>
+                    <div class="testimonial-rating">★★★★★</div>
+                </div>
+
+                <div class="testimonial-item">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar" style="background: linear-gradient(135deg, #14b8a6 0%, #0d9488 100%);">V</div>
+                        <div class="testimonial-info">
+                            <h3>Vikram Nair</h3>
+                            <div class="testimonial-role">PICT Pune | Strategy Analyst</div>
+                        </div>
+                    </div>
+                    <div class="testimonial-text">
+                        "Discipline, focus, and clarity—Mentorsphere gave me all three. I was all over the place before. Now I have a 5-year vision and I'm executing it."
+                    </div>
+                    <div class="testimonial-rating">★★★★★</div>
+                </div>
+
+                <div class="testimonial-item">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar" style="background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);">D</div>
+                        <div class="testimonial-info">
+                            <h3>Divya Rao</h3>
+                            <div class="testimonial-role">DY Patil Pune | MBA Candidate</div>
+                        </div>
+                    </div>
+                    <div class="testimonial-text">
+                        "The community at Mentorsphere is incredible. We push each other, support each other, celebrate each other's wins. This culture is rare and valuable beyond measure."
+                    </div>
+                    <div class="testimonial-rating">★★★★★</div>
+                </div>
+
+                <div class="testimonial-item">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar" style="background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);">M</div>
+                        <div class="testimonial-info">
+                            <h3>Manish Kumar</h3>
+                            <div class="testimonial-role">Pune University | CA</div>
+                        </div>
+                    </div>
+                    <div class="testimonial-text">
+                        "Mentorsphere taught me financial literacy and business sense. Now I'm a CA with entrepreneurial mindset—something most accountants lack."
+                    </div>
+                    <div class="testimonial-rating">★★★★★</div>
+                </div>
+
+                <div class="testimonial-item">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar" style="background: linear-gradient(135deg, #d4af37 0%, #c9a000 100%);">K</div>
+                        <div class="testimonial-info">
+                            <h3>Kavya Singh</h3>
+                            <div class="testimonial-role">BPIT Delhi (Visiting) | Designer</div>
+                        </div>
+                    </div>
+                    <div class="testimonial-text">
+                        "I came from Delhi and the MS community made me feel at home instantly. The blend of Pune's culture and Mentorsphere's philosophy is unique. Proud to be a part of this."
+                    </div>
+                    <div class="testimonial-rating">★★★★★</div>
+                </div>
+            </div>
+
+            <div class="carousel-nav">
+                <button class="carousel-nav-btn active" onclick="currentTestimonial(0)"></button>
+                <button class="carousel-nav-btn" onclick="currentTestimonial(1)"></button>
+                <button class="carousel-nav-btn" onclick="currentTestimonial(2)"></button>
+                <button class="carousel-nav-btn" onclick="currentTestimonial(3)"></button>
+                <button class="carousel-nav-btn" onclick="currentTestimonial(4)"></button>
+                <button class="carousel-nav-btn" onclick="currentTestimonial(5)"></button>
+                <button class="carousel-nav-btn" onclick="currentTestimonial(6)"></button>
+                <button class="carousel-nav-btn" onclick="currentTestimonial(7)"></button>
+                <button class="carousel-nav-btn" onclick="currentTestimonial(8)"></button>
+                <button class="carousel-nav-btn" onclick="currentTestimonial(9)"></button>
+                <button class="carousel-nav-btn" onclick="currentTestimonial(10)"></button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== REJECTION & RESILIENCE SECTION ===== -->
+    <section class="rejection-section" id="rejection">
+        <div class="rejection-content">
+            <h2>Learning Through Rejection & Resilience</h2>
+            <p class="rejection-message">
+                Success isn't about never failing. It's about understanding that every rejection, every failure, every setback is data—not defeat.
+            </p>
+            
+            <div class="rejection-points">
+                <div class="rejection-point">
+                    <h3><i class="fas fa-check-circle"></i> Reframe Rejection</h3>
+                    <p>Learn to see "No" as redirection, not rejection. Every founder, leader, and successful person has been rejected 100+ times.</p>
+                </div>
+                <div class="rejection-point">
+                    <h3><i class="fas fa-check-circle"></i> Bounce Back Faster</h3>
+                    <p>Resilience is a skill, not a trait. We teach students how to process failure emotionally and recover mentally to try again.</p>
+                </div>
+                <div class="rejection-point">
+                    <h3><i class="fas fa-check-circle"></i> Playful Yet Serious</h3>
+                    <p>Our environment is joyful, but the learning is deep. This combination makes students willing to take risks without fear.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== 3 UPS SECTION ===== -->
+    <section class="three-ups-section" id="threeups">
+        <div class="container">
+            <h2>The Three UPs Framework</h2>
+            <p class="section-intro">The Mentorsphere philosophy condensed into three powerful pillars</p>
+            
+            <div class="three-ups-grid">
+                <div class="up-card">
+                    <div class="up-icon">⚡</div>
+                    <h3>Ultra Positivity</h3>
+                    <p>Foster an unwavering belief in capability and potential. Students who stay positive and growth-oriented achieve 3x more than those who don't.</p>
+                </div>
+                <div class="up-card">
+                    <div class="up-icon">🚀</div>
+                    <h3>Ultra Productivity</h3>
+                    <p>Master the art of meaningful action. Time is finite—productivity multiplies its value. We teach systems, habits, and discipline.</p>
+                </div>
+                <div class="up-card">
+                    <div class="up-icon">🎯</div>
+                    <h3>Ultra Possibility</h3>
+                    <p>Expand your perception of what's possible. What seems impossible becomes inevitable when you have clarity, community, and mentorship.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== COMPARISON SECTION ===== -->
+    <section class="comparison-section" id="comparison">
+        <div class="container">
+            <h2>College Alone vs College + Mentorsphere</h2>
+            
+            <div class="comparison-table-container">
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th style="color: #ffffff;">Aspect</th>
+                            <th>College Alone</th>
+                            <th>College + Mentorsphere</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="font-weight: 600;">Communication Skills</td>
+                            <td>Theory in classroom</td>
+                            <td><span class="checkmark">✓</span> Practical mastery through mentors</td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight: 600;">Leadership Experience</td>
+                            <td>Theoretical concepts</td>
+                            <td><span class="checkmark">✓</span> Real-world project leadership</td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight: 600;">Career Direction</td>
+                            <td>Unclear path after graduation</td>
+                            <td><span class="checkmark">✓</span> Clear 5-year vision</td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight: 600;">Mentor Guidance</td>
+                            <td>None (or unavailable)</td>
+                            <td><span class="checkmark">✓</span> Weekly sessions with successful mentors</td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight: 600;">Soft Skills Development</td>
+                            <td>Neglected</td>
+                            <td><span class="checkmark">✓</span> Core focus alongside academics</td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight: 600;">Post-Graduation Salary</td>
+                            <td>3-5 LPA (average)</td>
+                            <td><span class="checkmark">✓</span> 8-15 LPA (typical MS student)</td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight: 600;">Community & Peer Network</td>
+                            <td>Temporary, dissolves after college</td>
+                            <td><span class="checkmark">✓</span> Lifelong professional network</td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight: 600;">Personal Growth</td>
+                            <td>Limited focus</td>
+                            <td><span class="checkmark">✓</span> Holistic development</td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight: 600;">Time to Success</td>
+                            <td>8-10 years post-college</td>
+                            <td><span class="checkmark">✓</span> Accelerated growth from day 1</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FINAL CTA SECTION ===== -->
     <section class="cta-section">
         <div class="container">
-            <h2>Your College Years Won't Repeat</h2>
-            <p>The most successful professionals decided early to invest in their growth. Don't leave your future to chance.</p>
-            <a href="contact.html" class="cta-button-large">Learn More About Mentorsphere</a>
+            <h2>Don't Let Your Child's Best Years Slip Away</h2>
+            <p>These 4 years (18-22) are critical. Every day matters. Every decision counts. Every skill learned compounds.</p>
+            <p style="margin-bottom: 40px; font-size: 1.15rem; opacity: 0.95;">Give your child the Mentorsphere advantage. Give them mentors. Give them clarity. Give them community.</p>
+            <a href="contact.html" class="cta-button-large">Begin The Transformation Today</a>
+        </div>
+    </section>
+
+    <!-- ===== BRIEF BOULEVARD TOWERS SECTION ===== -->
+    <section style="background: linear-gradient(180deg, #f5f7fa 0%, #ffffff 100%); padding: 80px 20px;">
+        <div class="container" style="max-width: 900px; text-align: center;">
+            <h2>Located in Premium Boulevard Towers, Pune</h2>
+            <p class="section-intro" style="margin-bottom: 30px;">Our office space is designed for excellence and growth. State-of-the-art facilities, inspiring ambiance, professional environment.</p>
+            <a href="about.html#location" style="color: #d4af37; font-weight: 600; text-decoration: none;">Learn more about our campus →</a>
+        </div>
+    </section>
+
+    <!-- ===== BRIEF FOUNDERS SECTION ===== -->
+    <section style="background: #ffffff; padding: 80px 20px;">
+        <div class="container" style="max-width: 900px; text-align: center;">
+            <h2>Meet Your Mentors</h2>
+            <p class="section-intro" style="margin-bottom: 30px;">4 Founders + 1 Senior Mentor + 9 Core Leaders—All with proven track records of success, innovation, and transformation.</p>
+            <a href="founders.html" style="color: #d4af37; font-weight: 600; text-decoration: none;">Meet our team →</a>
         </div>
     </section>
 
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2026 Mentorsphere. All rights reserved.</p>
+            <p>&copy; 2026 Mentorsphere. Crafting Modern Gurus for Tomorrow's World.</p>
             <div class="footer-links">
                 <a href="about.html">About</a>
                 <a href="contact.html">Contact</a>
-                <a href="index.html">Home</a>
+                <a href="gallery.html">Gallery</a>
+                <a href="testimonials.html">Testimonials</a>
             </div>
         </div>
     </footer>
 
     <script src="script.js"></script>
+    <script>
+        // ========================================
+        // EXTENDED JAVASCRIPT FOR MODERN GURUKUL
+        // ========================================
+
+        // Progress Bar
+        window.addEventListener('scroll', () => {
+            const scrolled = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+            document.getElementById('progressBar').style.width = scrolled + '%';
+
+            // Sticky Stats Widget
+            const statsSection = document.getElementById('stats');
+            const statsRect = statsSection.getBoundingClientRect();
+            const stickyStats = document.getElementById('stickyStats');
+            if (statsRect.top < window.innerHeight && statsRect.bottom > 0) {
+                stickyStats.classList.add('active');
+            } else {
+                stickyStats.classList.remove('active');
+            }
+
+            // Sticky Articles Widget
+            const articlesSection = document.getElementById('articles');
+            const articlesRect = articlesSection.getBoundingClientRect();
+            const stickyArticles = document.getElementById('stickyArticles');
+            if (articlesRect.top < window.innerHeight && articlesRect.bottom > 0) {
+                stickyArticles.classList.add('active');
+            } else {
+                stickyArticles.classList.remove('active');
+            }
+
+            // Sticky Culture Carousel
+            const cultureSection = document.getElementById('culture');
+            const cultureRect = cultureSection.getBoundingClientRect();
+            const stickyCulture = document.getElementById('stickyCulture');
+            if (cultureRect.top < window.innerHeight && cultureRect.bottom > 0) {
+                stickyCulture.classList.add('active');
+            } else {
+                stickyCulture.classList.remove('active');
+            }
+        });
+
+        // Skills Wheel Interaction
+        const skillItems = document.querySelectorAll('.skill-item');
+        const skillsWheel = document.getElementById('skillsWheel');
+        const wheelBtn = document.getElementById('wheelBtn');
+        let wheelPaused = false;
+
+        skillItems.forEach(skill => {
+            skill.addEventListener('mouseenter', (e) => {
+                skillsWheel.classList.add('paused');
+                wheelPaused = true;
+                wheelBtn.textContent = 'Resume Wheel';
+                
+                // Update info
+                const skillName = e.target.dataset.skill;
+                const skillTitles = {
+                    communication: 'Communication',
+                    leadership: 'Leadership',
+                    management: 'Management',
+                    stress: 'Stress Management',
+                    academics: 'Academic Excellence',
+                    digital: 'Digital Literacy',
+                    financial: 'Financial Literacy',
+                    public: 'Public Speaking',
+                    personality: 'Personality Development',
+                    negotiation: 'Negotiation Skills',
+                    time: 'Time Management',
+                    emotional: 'Emotional Intelligence'
+                };
+
+                const skillDescriptions = {
+                    communication: 'Master clear, confident communication. The foundation of all professional success.',
+                    leadership: 'Inspire and guide others. Learn from mentors who built billion-rupee businesses.',
+                    management: 'Organize chaos. Lead projects and people effectively.',
+                    stress: 'Handle pressure with poise. Your mental health is your strength.',
+                    academics: 'Balance college with growth. Academic excellence + practical skills.',
+                    digital: 'Master digital tools and platforms. Essential in modern work.',
+                    financial: 'Understand money. Build wealth. Invest wisely.',
+                    public: 'Command a room. Share your message with clarity and confidence.',
+                    personality: 'Polish your brand. Develop charisma and presence.',
+                    negotiation: 'Learn to negotiate like Manoj Modi (1500 Cr gifted!). Win without losing relationships.',
+                    time: 'Your most valuable asset. Master prioritization and productivity.',
+                    emotional: 'Lead yourself before leading others. EQ > IQ in life success.'
+                };
+
+                const skillCorporates = {
+                    communication: 'Why It Matters: 87% of CEOs cite communication as #1 skill. Poor communicators earn 30% less.',
+                    leadership: 'Why It Matters: Leaders earn 200%+ more than individual contributors. Build this skill early.',
+                    management: 'Why It Matters: Project managers earn 2x more. Management skills multiply your value.',
+                    stress: 'Why It Matters: Mental health drives performance. Resilient people outperform others 10x.',
+                    academics: 'Why It Matters: GPA gets you the interview. Everything else gets you the job.',
+                    digital: 'Why It Matters: Digital illiteracy makes you irrelevant in 2026 and beyond.',
+                    financial: 'Why It Matters: Financial literacy separates rich from poor. Most never learn this.',
+                    public: 'Why It Matters: Public speakers become leaders. Leaders multiply their income.',
+                    personality: 'Why It Matters: First impressions matter. Personality opens doors money can't.',
+                    negotiation: 'Why It Matters: Every negotiation is a financial transaction. Learn to negotiate better deals.',
+                    time: 'Why It Matters: Time is the only non-renewable resource. Master it = master your life.',
+                    emotional: 'Why It Matters: 90% of high performers have high EQ. Emotional control drives success.'
+                };
+
+                document.getElementById('skillTitle').textContent = skillTitles[skillName];
+                document.getElementById('skillDesc').textContent = skillDescriptions[skillName];
+                document.getElementById('skillCorporate').textContent = skillCorporates[skillName];
+            });
+        });
+
+        wheelBtn.addEventListener('click', () => {
+            if (wheelPaused) {
+                skillsWheel.classList.remove('paused');
+                wheelPaused = false;
+                wheelBtn.textContent = 'Pause Wheel';
+            } else {
+                skillsWheel.classList.add('paused');
+                wheelPaused = true;
+                wheelBtn.textContent = 'Resume Wheel';
+            }
+        });
+
+        // Culture Carousel
+        let currentCultureSlideIndex = 0;
+        function currentCultureSlide(index) {
+            const slides = document.querySelectorAll('.culture-slide');
+            const dots = document.querySelectorAll('.carousel-dot');
+            currentCultureSlideIndex = index;
+            slides.forEach(slide => slide.classList.remove('active'));
+            dots.forEach(dot => dot.classList.remove('active'));
+            slides[currentCultureSlideIndex].classList.add('active');
+            dots[currentCultureSlideIndex].classList.add('active');
+        }
+
+        // Auto-rotate culture carousel
+        setInterval(() => {
+            currentCultureSlideIndex = (currentCultureSlideIndex + 1) % document.querySelectorAll('.culture-slide').length;
+            const slides = document.querySelectorAll('.culture-slide');
+            const dots = document.querySelectorAll('.carousel-dot');
+            slides.forEach(slide => slide.classList.remove('active'));
+            dots.forEach(dot => dot.classList.remove('active'));
+            slides[currentCultureSlideIndex].classList.add('active');
+            dots[currentCultureSlideIndex].classList.add('active');
+        }, 5000);
+
+        // Sticky Culture Carousel Auto-rotate
+        let currentStickySlide = 0;
+        setInterval(() => {
+            const slides = document.querySelectorAll('.sticky-culture-slide');
+            if (slides.length > 0) {
+                slides.forEach(slide => slide.classList.remove('active'));
+                currentStickySlide = (currentStickySlide + 1) % slides.length;
+                slides[currentStickySlide].classList.add('active');
+            }
+        }, 4000);
+
+        // Testimonials Carousel
+        let currentTestimonialIndex = 0;
+        function currentTestimonial(index) {
+            const items = document.querySelectorAll('.testimonial-item');
+            const navBtns = document.querySelectorAll('.carousel-nav-btn');
+            currentTestimonialIndex = index;
+            items.forEach(item => item.classList.remove('active'));
+            navBtns.forEach(btn => btn.classList.remove('active'));
+            items[currentTestimonialIndex].classList.add('active');
+            navBtns[currentTestimonialIndex].classList.add('active');
+        }
+
+        // Auto-rotate testimonials
+        setInterval(() => {
+            currentTestimonialIndex = (currentTestimonialIndex + 1) % document.querySelectorAll('.testimonial-item').length;
+            currentTestimonial(currentTestimonialIndex);
+        }, 6000);
+
+        // Stats Animation
+        function animateCounter(element, target, duration = 2000) {
+            const start = 0;
+            const startTime = Date.now();
+
+            function update() {
+                const elapsed = Date.now() - startTime;
+                const progress = Math.min(elapsed / duration, 1);
+                const value = Math.floor(start + (target - start) * progress);
+                element.textContent = value + (element.id.includes('stat1') ? '+' : element.id.includes('stat2') ? '%' : element.id.includes('stat4') ? 'x' : '');
+                if (progress < 1) requestAnimationFrame(update);
+            }
+            update();
+        }
+
+        // Trigger stats animation
+        let statsAnimated = false;
+        const statsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !statsAnimated) {
+                    animateCounter(document.getElementById('stat1'), 1000);
+                    animateCounter(document.getElementById('stat2'), 95);
+                    animateCounter(document.getElementById('stat3'), 500);
+                    animateCounter(document.getElementById('stat4'), 10);
+                    statsAnimated = true;
+                }
+            });
+        });
+        statsObserver.observe(document.getElementById('stats'));
+
+        console.log('✨ Mentorsphere Modern Gurukul - Loaded Successfully! ✨');
+    </script>
 </body>
 </html>
