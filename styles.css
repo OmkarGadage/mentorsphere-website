@@ -374,10 +374,10 @@ h2::after {
 /* ============================================
    FOUNDERS SECTION
    ============================================ */
-.founders-grid,
-.leaders-grid {
+
+.founders-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(2, 1fr);
     gap: 40px;
     margin-top: 50px;
 }
@@ -1130,9 +1130,14 @@ h2::after {
         grid-template-columns: 1fr;
     }
 
+    @media (max-width: 768px) {
+       .founders-grid {
+           grid-template-columns: 1fr;
+       }
+    }
+
     .why-grid,
     .offer-grid,
-    .founders-grid,
     .leaders-grid,
     .testimonials-grid,
     .gallery-grid,
