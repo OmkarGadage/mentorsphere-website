@@ -70,7 +70,7 @@ body {
 .logo-img {
     height: 120px;
     width: auto;
-  margin-left: 10px;
+  margin-left: -50px;
 }
 
 .nav-menu {
@@ -1221,7 +1221,7 @@ h2::after {
 
     .logo-img {
         height: 120px;
-      margin-left: 0px;
+      margin-left: -20px;
     }
 }
 
