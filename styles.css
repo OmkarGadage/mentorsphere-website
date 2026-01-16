@@ -492,8 +492,8 @@ h2::after {
 .mentor-image {
     overflow: hidden;
     border-radius: 12px;
-    width: 260px;     /* control size */
-    height: 180px;    /* rectangular ratio */
+    width: 400px;     /* control size */
+    height: 400px;    /* rectangular ratio */
 }
 
 .mentor-image img {
