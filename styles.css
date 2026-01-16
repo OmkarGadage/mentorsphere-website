@@ -477,7 +477,7 @@ h2::after {
 /* Card layout */
 .senior-mentor-card {
     display: grid;
-    grid-template-columns: auto 1fr;  /* image | text */
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
     gap: 32px;
     align-items: center;
     background: var(--light-color);
@@ -488,19 +488,19 @@ h2::after {
     margin: 40px auto;
 }
 
-/* Image: smaller, rectangular, tidy */
 .mentor-image {
     overflow: hidden;
     border-radius: 12px;
-    width: 400px;     /* control size */
-    height: 400px;    /* rectangular ratio */
+    /* let it follow the column width */
+    width: 100%;
+    max-width: 320px;   /* optional cap so it never gets too huge */
+    margin: 0 auto;     /* center in its column */
 }
 
 .mentor-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;   /* crop nicely */
     display: block;
+    width: 100%;       /* fills available width */
+    height: auto;      /* keeps aspect ratio */
 }
 
 /* Text styling */
@@ -531,13 +531,10 @@ h2::after {
     }
 
     .mentor-image {
-        margin: 0 auto 16px;
-    }
-
-    .mentor-content {
-        text-align: left;
+        max-width: 100%;
     }
 }
+
 
 /* ============================================
    GALLERY SECTION
