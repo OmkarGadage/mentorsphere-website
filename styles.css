@@ -475,14 +475,14 @@ h2::after {
 
 .senior-mentor-card {
     display: grid;
-    grid-template-columns: 1.3fr 1fr;  /* image smaller vs text */
-    gap: 30px;
+    /* 15% empty | 70% content | 15% empty */
+    grid-template-columns: 15% 70% 15%;
     align-items: center;
     background: var(--light-color);
-    padding: 28px;
+    padding: 30px;
     border-radius: 12px;
     box-shadow: var(--shadow);
-    max-width: 720px;
+    max-width: 900px;
     margin: 40px auto;
 }
 
