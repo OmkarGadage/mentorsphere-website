@@ -490,9 +490,8 @@ h2::after {
 .mentor-image {
     overflow: hidden;
     border-radius: 12px;
-    max-width: 260px;   /* control image width */
-    height: 260px;      /* square */
-    justify-self: center;
+    width: 260px;   /* rectangular, not full width */
+    height: 180px;  /* adjust ratio here */
 }
 
 .mentor-image img {
@@ -501,6 +500,12 @@ h2::after {
     object-fit: cover;
 }
 
+.senior-mentor-inner {
+    display: grid;
+    grid-template-columns: auto 1fr; /* image | text */
+    gap: 24px;
+    align-items: center;
+}
 
 .mentor-content h3 {
     font-size: 2rem;
