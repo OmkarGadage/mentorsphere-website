@@ -37,115 +37,115 @@ window.addEventListener('load', () => {
 });
 
 // ===== Testimonials carousel (infinite loop) =====
-document.addEventListener("DOMContentLoaded", function () {
-  const list = document.querySelector(".testimonial-list");
-  const cards = Array.from(document.querySelectorAll(".testimonial-card"));
-  const prevBtn = document.querySelector(".testimonial-nav.prev");
-  const nextBtn = document.querySelector(".testimonial-nav.next");
+//document.addEventListener("DOMContentLoaded", function () {
+//  const list = document.querySelector(".testimonial-list");
+  //const cards = Array.from(document.querySelectorAll(".testimonial-card"));
+  //const prevBtn = document.querySelector(".testimonial-nav.prev");
+  //const nextBtn = document.querySelector(".testimonial-nav.next");
 
-  if (!list || cards.length === 0 || !prevBtn || !nextBtn) return;
+  //if (!list || cards.length === 0 || !prevBtn || !nextBtn) return;
 
-  const visibleCount = 3;          // how many cards visible at once
-  const autoDelay = 5000;          // 5s between slides
-  let autoTimer = null;
+  //const visibleCount = 3;          // how many cards visible at once
+  //const autoDelay = 5000;          // 5s between slides
+  //let autoTimer = null;
 
   // 1) Clone first `visibleCount` cards and append to end
-  const clones = cards.slice(0, visibleCount).map(card => card.cloneNode(true));
-  clones.forEach(clone => {
-    clone.classList.remove("active");
-    list.appendChild(clone);
-  });
+  //const clones = cards.slice(0, visibleCount).map(card => card.cloneNode(true));
+  //clones.forEach(clone => {
+   // clone.classList.remove("active");
+    //list.appendChild(clone);
+  //});
 
-  const allCards = Array.from(list.querySelectorAll(".testimonial-card"));
-  let currentIndex = 0;
+  //const allCards = Array.from(list.querySelectorAll(".testimonial-card"));
+  //let currentIndex = 0;
 
-  function setActive() {
-    allCards.forEach((card, idx) => {
-      if (idx >= currentIndex && idx < currentIndex + visibleCount) {
-        card.classList.add("active");
-      } else {
-        card.classList.remove("active");
-      }
-    });
-  }
+  //function setActive() {
+   // allCards.forEach((card, idx) => {
+     // if (idx >= currentIndex && idx < currentIndex + visibleCount) {
+      //  card.classList.add("active");
+     // } else {
+      //  card.classList.remove("active");
+     // }
+   // });
+ // }
 
-  function getCardWidth() {
+ // function getCardWidth() {
     // width + horizontal gap (match your CSS gap: 24px)
-    return allCards[0].offsetWidth + 24;
-  }
+  //  return allCards[0].offsetWidth + 24;
+  //}
 
-  function updateTransform(animate = true) {
-    const cardWidth = getCardWidth();
-    const offset = -currentIndex * cardWidth;
+ // function updateTransform(animate = true) {
+  //  const cardWidth = getCardWidth();
+   // const offset = -currentIndex * cardWidth;
 
-    if (!animate) {
-      list.style.transition = "none";
-    } else {
-      list.style.transition = "transform 0.4s ease";
-    }
-    list.style.transform = `translateX(${offset}px)`;
-    setActive();
-  }
+   // if (!animate) {
+    //  list.style.transition = "none";
+   // } else {
+    //  list.style.transition = "transform 0.4s ease";
+   // }
+  //  list.style.transform = `translateX(${offset}px)`;
+  //  setActive();
+ // }
 
-  function goNext() {
-    currentIndex++;
-    updateTransform(true);
+ // function goNext() {
+  //  currentIndex++;
+  //  updateTransform(true);
 
     // When transition ends, if we've moved into clones, snap back
-    list.addEventListener(
-      "transitionend",
-      function handler() {
-        const originalCount = cards.length;
-        if (currentIndex >= originalCount) {
-          currentIndex = 0;        // snap back to real first card
-          updateTransform(false);  // no animation for the snap
-        }
-        list.removeEventListener("transitionend", handler);
-      }
-    );
-  }
+   // list.addEventListener(
+     // "transitionend",
+     // function handler() {
+     //   const originalCount = cards.length;
+     //   if (currentIndex >= originalCount) {
+     //     currentIndex = 0;        // snap back to real first card
+     //     updateTransform(false);  // no animation for the snap
+     //   }
+     //   list.removeEventListener("transitionend", handler);
+     // }
+    //);
+ // }
 
-  function goPrev() {
-    const originalCount = cards.length;
-    if (currentIndex === 0) {
+ // function goPrev() {
+  //  const originalCount = cards.length;
+   // if (currentIndex === 0) {
       // Jump instantly to equivalent position inside clones zone
-      currentIndex = originalCount;
-      updateTransform(false);
-    }
+   //   currentIndex = originalCount;
+   //   updateTransform(false);
+   // }
     // Now move one step left with animation
-    requestAnimationFrame(() => {
-      currentIndex--;
-      updateTransform(true);
-    });
-  }
+  //  requestAnimationFrame(() => {
+  //    currentIndex--;
+  //    updateTransform(true);
+  //  });
+ // }
 
-  function startAuto() {
-    stopAuto();
-    autoTimer = setInterval(goNext, autoDelay);
-  }
+ // function startAuto() {
+ //   stopAuto();
+ //   autoTimer = setInterval(goNext, autoDelay);
+ // }
 
-  function stopAuto() {
-    if (autoTimer) clearInterval(autoTimer);
-  }
+ // function stopAuto() {
+  //  if (autoTimer) clearInterval(autoTimer);
+ // }
 
   // Buttons reset autoplay
-  nextBtn.addEventListener("click", () => {
-    stopAuto();
-    goNext();
-    startAuto();
-  });
+ // nextBtn.addEventListener("click", () => {
+ //   stopAuto();
+ //   goNext();
+ //   startAuto();
+ // });
 
-  prevBtn.addEventListener("click", () => {
-    stopAuto();
-    goPrev();
-    startAuto();
-  });
+ // prevBtn.addEventListener("click", () => {
+ //   stopAuto();
+ //   goPrev();
+ //   startAuto();
+ // });
 
   // Initial state
-  setActive();
-  updateTransform(false);
-  startAuto();
-});
+ // setActive();
+ // updateTransform(false);
+ // startAuto();
+//});
 
 // Smooth scroll behavior
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -153,7 +153,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         e.preventDefault();
         const target = document.querySelector(this.getAttribute('href'));
         if (target) {
-            target.scrollIntoView({
+          target.scrollIntoView({
                 behavior: 'smooth'
             });
         }
@@ -166,7 +166,7 @@ const observerOptions = {
     rootMargin: '0px 0px -100px 0px'
 };
 
-const observer = new IntersectionObserver((entries) => {
+//const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
             entry.target.style.opacity = '1';
@@ -186,7 +186,7 @@ document.querySelectorAll('.why-card, .founder-card, .testimonial-card, .value-c
 // Form validation and submission feedback
 const contactForm = document.querySelector('.contact-form');
 if (contactForm) {
-    contactForm.addEventListener('submit', (e) => {
+   contactForm.addEventListener('submit', (e) => {
         // Form will be submitted to Formspree
         const submitButton = contactForm.querySelector('.submit-button');
         submitButton.style.opacity = '0.7';
