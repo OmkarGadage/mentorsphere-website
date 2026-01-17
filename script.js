@@ -36,6 +36,58 @@ window.addEventListener('load', () => {
     });
 });
 
+// ===== Testimonials carousel =====
+document.addEventListener("DOMContentLoaded", function () {
+  const list = document.querySelector(".testimonial-list");
+  const cards = document.querySelectorAll(".testimonial-card");
+  const prevBtn = document.querySelector(".testimonial-nav.prev");
+  const nextBtn = document.querySelector(".testimonial-nav.next");
+
+  if (!list || cards.length === 0 || !prevBtn || !nextBtn) return;
+
+  let currentIndex = 0;
+
+  function updateCarousel() {
+    const cardWidth = cards[0].offsetWidth + 24; // card width + gap (match CSS gap)
+    const offset = -currentIndex * cardWidth;
+
+    list.style.transform = `translateX(${offset}px)`;
+
+    cards.forEach((card, idx) => {
+      if (idx === currentIndex || idx === currentIndex + 1 || idx === currentIndex + 2) {
+        card.classList.add("active");
+      } else {
+        card.classList.remove("active");
+      }
+    });
+  }
+
+  function showNext() {
+    const maxIndex = Math.max(0, cards.length - 3); // 3 visible at a time
+    if (currentIndex < maxIndex) {
+      currentIndex++;
+      updateCarousel();
+    }
+  }
+
+  function showPrev() {
+    if (currentIndex > 0) {
+      currentIndex--;
+      updateCarousel();
+    }
+  }
+
+  nextBtn.addEventListener("click", showNext);
+  prevBtn.addEventListener("click", showPrev);
+
+  // Optional: auto‑play
+  // setInterval(showNext, 6000);
+
+  // Initial state
+  updateCarousel();
+});
+
+
 // Smooth scroll behavior
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
