@@ -46,15 +46,18 @@ document.addEventListener("DOMContentLoaded", function () {
   if (!list || cards.length === 0 || !prevBtn || !nextBtn) return;
 
   let currentIndex = 0;
+  let autoTimer = null;
+  const visibleCount = 3;          // how many cards visible at once
+  const autoDelay = 5000;          // 5s between slides
 
   function updateCarousel() {
-    const cardWidth = cards[0].offsetWidth + 24; // card width + gap (match CSS gap)
+    const cardWidth = cards[0].offsetWidth + 24; // match CSS gap
     const offset = -currentIndex * cardWidth;
-
     list.style.transform = `translateX(${offset}px)`;
 
     cards.forEach((card, idx) => {
-      if (idx === currentIndex || idx === currentIndex + 1 || idx === currentIndex + 2) {
+      // highlight current visible group
+      if (idx >= currentIndex && idx < currentIndex + visibleCount) {
         card.classList.add("active");
       } else {
         card.classList.remove("active");
@@ -63,28 +66,49 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function showNext() {
-    const maxIndex = Math.max(0, cards.length - 3); // 3 visible at a time
+    const maxIndex = Math.max(0, cards.length - visibleCount);
     if (currentIndex < maxIndex) {
       currentIndex++;
-      updateCarousel();
+    } else {
+      currentIndex = 0; // loop back to first
     }
+    updateCarousel();
   }
 
   function showPrev() {
+    const maxIndex = Math.max(0, cards.length - visibleCount);
     if (currentIndex > 0) {
       currentIndex--;
-      updateCarousel();
+    } else {
+      currentIndex = maxIndex; // go to last group
     }
+    updateCarousel();
   }
 
-  nextBtn.addEventListener("click", showNext);
-  prevBtn.addEventListener("click", showPrev);
+  function startAuto() {
+    stopAuto();
+    autoTimer = setInterval(showNext, autoDelay);
+  }
 
-  // Optional: auto‑play
-  // setInterval(showNext, 6000);
+  function stopAuto() {
+    if (autoTimer) clearInterval(autoTimer);
+  }
 
-  // Initial state
+  nextBtn.addEventListener("click", () => {
+    stopAuto();
+    showNext();
+    startAuto();
+  });
+
+  prevBtn.addEventListener("click", () => {
+    stopAuto();
+    showPrev();
+    startAuto();
+  });
+
+  // Initial state + autoplay
   updateCarousel();
+  startAuto();
 });
 
 
