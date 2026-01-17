@@ -36,27 +36,31 @@ window.addEventListener('load', () => {
     });
 });
 
-// ===== Testimonials carousel =====
+// ===== Testimonials carousel (infinite loop) =====
 document.addEventListener("DOMContentLoaded", function () {
   const list = document.querySelector(".testimonial-list");
-  const cards = document.querySelectorAll(".testimonial-card");
+  const cards = Array.from(document.querySelectorAll(".testimonial-card"));
   const prevBtn = document.querySelector(".testimonial-nav.prev");
   const nextBtn = document.querySelector(".testimonial-nav.next");
 
   if (!list || cards.length === 0 || !prevBtn || !nextBtn) return;
 
-  let currentIndex = 0;
-  let autoTimer = null;
   const visibleCount = 3;          // how many cards visible at once
   const autoDelay = 5000;          // 5s between slides
+  let autoTimer = null;
 
-  function updateCarousel() {
-    const cardWidth = cards[0].offsetWidth + 24; // match CSS gap
-    const offset = -currentIndex * cardWidth;
-    list.style.transform = `translateX(${offset}px)`;
+  // 1) Clone first `visibleCount` cards and append to end
+  const clones = cards.slice(0, visibleCount).map(card => card.cloneNode(true));
+  clones.forEach(clone => {
+    clone.classList.remove("active");
+    list.appendChild(clone);
+  });
 
-    cards.forEach((card, idx) => {
-      // highlight current visible group
+  const allCards = Array.from(list.querySelectorAll(".testimonial-card"));
+  let currentIndex = 0;
+
+  function setActive() {
+    allCards.forEach((card, idx) => {
       if (idx >= currentIndex && idx < currentIndex + visibleCount) {
         card.classList.add("active");
       } else {
@@ -65,52 +69,83 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  function showNext() {
-    const maxIndex = Math.max(0, cards.length - visibleCount);
-    if (currentIndex < maxIndex) {
-      currentIndex++;
-    } else {
-      currentIndex = 0; // loop back to first
-    }
-    updateCarousel();
+  function getCardWidth() {
+    // width + horizontal gap (match your CSS gap: 24px)
+    return allCards[0].offsetWidth + 24;
   }
 
-  function showPrev() {
-    const maxIndex = Math.max(0, cards.length - visibleCount);
-    if (currentIndex > 0) {
-      currentIndex--;
+  function updateTransform(animate = true) {
+    const cardWidth = getCardWidth();
+    const offset = -currentIndex * cardWidth;
+
+    if (!animate) {
+      list.style.transition = "none";
     } else {
-      currentIndex = maxIndex; // go to last group
+      list.style.transition = "transform 0.4s ease";
     }
-    updateCarousel();
+    list.style.transform = `translateX(${offset}px)`;
+    setActive();
+  }
+
+  function goNext() {
+    currentIndex++;
+    updateTransform(true);
+
+    // When transition ends, if we've moved into clones, snap back
+    list.addEventListener(
+      "transitionend",
+      function handler() {
+        const originalCount = cards.length;
+        if (currentIndex >= originalCount) {
+          currentIndex = 0;        // snap back to real first card
+          updateTransform(false);  // no animation for the snap
+        }
+        list.removeEventListener("transitionend", handler);
+      }
+    );
+  }
+
+  function goPrev() {
+    const originalCount = cards.length;
+    if (currentIndex === 0) {
+      // Jump instantly to equivalent position inside clones zone
+      currentIndex = originalCount;
+      updateTransform(false);
+    }
+    // Now move one step left with animation
+    requestAnimationFrame(() => {
+      currentIndex--;
+      updateTransform(true);
+    });
   }
 
   function startAuto() {
     stopAuto();
-    autoTimer = setInterval(showNext, autoDelay);
+    autoTimer = setInterval(goNext, autoDelay);
   }
 
   function stopAuto() {
     if (autoTimer) clearInterval(autoTimer);
   }
 
+  // Buttons reset autoplay
   nextBtn.addEventListener("click", () => {
     stopAuto();
-    showNext();
+    goNext();
     startAuto();
   });
 
   prevBtn.addEventListener("click", () => {
     stopAuto();
-    showPrev();
+    goPrev();
     startAuto();
   });
 
-  // Initial state + autoplay
-  updateCarousel();
+  // Initial state
+  setActive();
+  updateTransform(false);
   startAuto();
 });
-
 
 // Smooth scroll behavior
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
